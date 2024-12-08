@@ -198,7 +198,7 @@
 
                         %>
                         <tr>
-                            <td colSpan="4">Khong Co Du Lieu</td>
+                            <td colSpan="5">Khong Co Du Lieu</td>
                         </tr>
                         <%                            } else {
 
