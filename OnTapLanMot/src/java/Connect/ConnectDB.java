@@ -11,6 +11,7 @@ import java.sql.*;
  * @author truongson
  */
 public class ConnectDB {
+
     private final Connection con;
 
     public ConnectDB() {
@@ -26,14 +27,32 @@ public class ConnectDB {
             return null;
         }
     }
-    
-    public ResultSet getData(String query) throws SQLException{
+
+    public ResultSet getData(String query) throws SQLException {
         Statement stmt = this.con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         return rs;
     }
-    
-    public boolean DeleteData(String MaHD)  throws SQLException{
+
+    public boolean InsertData(String MaHD, String TenCH, int SoTV, double ThuNhap) {
+        try {
+            String sql = "insert into HoDan values(?,?,?,?)";
+            PreparedStatement prstm = con.prepareStatement(sql);
+            prstm.setString(1, MaHD);
+            prstm.setString(2, TenCH);
+            prstm.setInt(3, SoTV);
+            prstm.setDouble(4, ThuNhap);
+
+            prstm.executeUpdate();
+            prstm.close();
+            return true;
+        } catch (Exception e) {
+            System.err.println("Err: " + e.toString());
+            return false;
+        }
+    }
+
+    public boolean DeleteData(String MaHD) throws SQLException {
         String sql = "delete from HoDan where MaHD = ?";
         PreparedStatement prstm = this.con.prepareStatement(sql);
         prstm.setString(1, MaHD);
