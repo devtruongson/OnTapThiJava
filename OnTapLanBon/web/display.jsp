@@ -12,7 +12,8 @@
 <%
     ArrayList<Product> listProduct = (ArrayList<Product>) request.getAttribute("list");
     String IDQuery = request.getAttribute("ID") != null ? request.getAttribute("ID").toString() : "";
-    
+    Double sum = request.getAttribute("sum") != null ? Double.parseDouble(request.getAttribute("sum").toString()) : null;
+
     if (listProduct == null) {
         listProduct = new ArrayList<>();
         try {
@@ -157,9 +158,17 @@
                     </tbody>
                 </table>
             </div>
-            <button>
-                Tong Tien Cac Mat Hang
-            </button>
+            <form action="XLTinhTong">
+                <button>
+                    Tong Tien Cac Mat Hang
+                </button>
+            </form>
+            <%                        if (sum != null) {
+            %>
+            <h3>Tổng Tiền Là: <%=sum%></h3>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>
