@@ -31,8 +31,6 @@
         } catch (Exception e) {
         }
     }
-
-
 %>
 
 <!DOCTYPE html>
